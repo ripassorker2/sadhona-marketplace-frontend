@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1",
+        "name": "Data Entry"
+    },
+    {
+        "id": "2",
+        "name": "Digital Marketing"
+    },
+    {
+        "id": "3",
+        "name": "Graphic And Design"
+    },
+    {
+        "id": "7",
+        "name": "Video And Animation"
+    },
+    {
+        "id": "4",
+        "name": "Web Design And Development"
+    },
+    {
+        "id": "5",
+        "name": "Software And Mobile App Development"
+    },
+    {
+        "id": "6",
+        "name": "Support And Security"
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "id": "1",
+        "categoryId": "1",
+        "title": "Exeel Data Entry",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZi91OEnO3PWWWEmfjnqynti_MEG9-LjIZ8koQXfx8khzdZfP-UGOmD8hD0DcE37iSQ0g&usqp=CAU"
+    },
+    {
+        "id": "2",
+        "categoryId": "1",
+        "title": "Web Research",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZi91OEnO3PWWWEmfjnqynti_MEG9-LjIZ8koQXfx8khzdZfP-UGOmD8hD0DcE37iSQ0g&usqp=CAU"
+    },
+    {
+        "id": "3",
+        "categoryId": "1",
+        "title": "Copy Past Job And Typing",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZi91OEnO3PWWWEmfjnqynti_MEG9-LjIZ8koQXfx8khzdZfP-UGOmD8hD0DcE37iSQ0g&usqp=CAU"
+    },
+    {
+        "id": "4",
+        "categoryId": "1",
+        "title": "Data Mining",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZi91OEnO3PWWWEmfjnqynti_MEG9-LjIZ8koQXfx8khzdZfP-UGOmD8hD0DcE37iSQ0g&usqp=CAU"
+    },
+    {
+        "id": "5",
+        "categoryId": "1",
+        "title": "CRM Data Entry.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZi91OEnO3PWWWEmfjnqynti_MEG9-LjIZ8koQXfx8khzdZfP-UGOmD8hD0DcE37iSQ0g&usqp=CAU"
+    },
+    {
+        "id": "6",
+        "categoryId": "1",
+        "title": "Linkedin Research",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZi91OEnO3PWWWEmfjnqynti_MEG9-LjIZ8koQXfx8khzdZfP-UGOmD8hD0DcE37iSQ0g&usqp=CAU"
+    },
+    {
+        "id": "7",
+        "categoryId": "1",
+        "title": "B2B Lead generation",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZi91OEnO3PWWWEmfjnqynti_MEG9-LjIZ8koQXfx8khzdZfP-UGOmD8hD0DcE37iSQ0g&usqp=CAU"
+    },
+    {
+        "id": "8",
+        "categoryId": "1",
+        "title": "Translation",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZi91OEnO3PWWWEmfjnqynti_MEG9-LjIZ8koQXfx8khzdZfP-UGOmD8hD0DcE37iSQ0g&usqp=CAU"
+    },
+    {
+        "id": "9",
+        "categoryId": "2",
+        "title": "Search Engine Optimization (SEO)",
+        "img": "https://img.freepik.com/free-photo/digital-marketing-with-icons-business-people_53876-94833.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais"
+    },
+    {
+        "id": "10",
+        "categoryId": "2",
+        "title": "Search Engine Marketing (SEM)",
+        "img": "https://img.freepik.com/free-photo/digital-marketing-with-icons-business-people_53876-94833.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais"
+    },
+    {
+        "id": "11",
+        "categoryId": "2",
+        "title": "Local SEO",
+        "img": "https://img.freepik.com/free-photo/digital-marketing-with-icons-business-people_53876-94833.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais"
+    },
+    {
+        "id": "12",
+        "categoryId": "2",
+        "title": "E- Commerce SEO",
+        "img": "https://img.freepik.com/free-photo/digital-marketing-with-icons-business-people_53876-94833.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais"
+    },
+    {
+        "id": "13",
+        "categoryId": "2",
+        "title": "Social Medio Marketing",
+        "img": "https://img.freepik.com/free-photo/digital-marketing-with-icons-business-people_53876-94833.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais"
+    },
+    {
+        "id": "14",
+        "categoryId": "2",
+        "title": "Affilate Marketing",
+        "img": "https://img.freepik.com/free-photo/digital-marketing-with-icons-business-people_53876-94833.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais"
+    },
+    {
+        "id": "16",
+        "categoryId": "2",
+        "title": "Text Message Marketing",
+        "img": "https://img.freepik.com/free-photo/digital-marketing-with-icons-business-people_53876-94833.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais"
+    }
+]
