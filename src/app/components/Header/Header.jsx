@@ -45,12 +45,12 @@ const Header = () => {
                             {user?.email && (
                                 <li>
                                     <Link
-                                        className="text-primary dark:text-darkText hover:text-blue text-base dark:hover:text-blue duration-300 "
+                                        className="text-primary dark:text-darkText hover:text-blue text-base dark:hover:text-blue duration-300 mt-3"
                                         href={"/profile"}>
                                         <Image
                                             alt="user image"
                                             src={userImg}
-                                            className="h-10 w-10 rounded-full"
+                                            className="h-6 w-6 rounded-full"
                                         />
                                     </Link>
                                 </li>

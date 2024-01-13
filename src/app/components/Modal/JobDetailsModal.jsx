@@ -2,8 +2,22 @@ import Image from "next/image";
 import {IoLocation} from "react-icons/io5";
 import {MdOutlineCancel} from "react-icons/md";
 import img from "../../../assets/team/kamrul.jpg";
+import TimeAgo from "timeago-react";
+import {formattedDateString} from "@/utils/formateDateTime";
 
-const JobDetailModal = ({showModal, setShowModal}) => {
+const JobDetailModal = ({data, showModal, setShowModal}) => {
+    console.log(data);
+    const {
+        title,
+        level,
+        location,
+        price,
+        description,
+        requireSkills,
+        createdAt,
+        user,
+    } = data;
+
     return (
         <>
             {showModal && (
@@ -15,7 +29,7 @@ const JobDetailModal = ({showModal, setShowModal}) => {
                                 {/*header*/}
                                 <div className="flex items-center justify-between   border-b  dark:border-gray-700 border-gray-500">
                                     <h3 className="md:text-2xl pb-2 text-lg font-semibold text-head">
-                                        Website development
+                                        {title}
                                     </h3>
                                     <button onClick={() => setShowModal(false)}>
                                         <MdOutlineCancel className="text-green md:text-2xl text-xl" />
@@ -26,69 +40,65 @@ const JobDetailModal = ({showModal, setShowModal}) => {
                                     <div className="md:col-span-2">
                                         <div className="md:flex space-x-6 items-center text-sm">
                                             <p className=" pb-2">
-                                                Posted on 54 min ago
+                                                Posted on{" "}
+                                                <TimeAgo
+                                                    datetime={formattedDateString(
+                                                        createdAt
+                                                    )}
+                                                    locale="EN"
+                                                />
                                             </p>
                                             <div className="flex items-center">
                                                 <IoLocation
                                                     className="mr-1"
                                                     size={16}
                                                 />{" "}
-                                                <p>Dhaka bangladesh.</p>
+                                                <p>{location}.</p>
                                             </div>
                                         </div>
                                         <div className="mt-6">
-                                            <p>
-                                                Lorem ipsum dolor sit amet
-                                                consectetur adipisicing elit.
-                                                Cumque nostrum perspiciatis id
-                                                veniam eos blanditiis saepe
-                                                culpa sequi eius, ab facilis!
-                                                Odio accusantium sed voluptas
-                                                ipsam, veritatis explicabo
-                                                dolores magnam?
-                                            </p>
+                                            <p>{description}</p>
                                         </div>
                                         <div className="mt-6 text-lg">
                                             <p className="font-semibold">
-                                                <span>Fixed price : $50.0</span>
+                                                <span>
+                                                    Fixed price : ${price}.00
+                                                </span>
                                             </p>
                                         </div>
+
                                         <div className="mt-4 md:flex space-x-6 items-center font-medium">
                                             <p className=" ">
-                                                Level : Intermidiate
+                                                Experience level : {level}
                                             </p>
                                             <p>Job type : remote</p>
+                                        </div>
+                                        <div className="mt-4">
+                                            <p className="font-semibold">
+                                                <span>
+                                                    {" "}
+                                                    Delivary time : 4 days
+                                                </span>
+                                            </p>
                                         </div>
                                         <div className="mt-6">
                                             <h2 className="text-head text-xl ">
                                                 {" "}
                                                 Require slills
                                             </h2>
-                                            <div className="flex space-y-2 space-x-2 -ml-2 flex-wrap uppercase ">
+                                            <div className="flex space-y-2 space-x-2 -ml-2 flex-wrap uppercase">
                                                 <button className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1 hidden">
                                                     CSS3
                                                 </button>
-                                                <button className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
-                                                    react js
-                                                </button>
-                                                <button className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
-                                                    javascript
-                                                </button>
-                                                <button className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
-                                                    react js
-                                                </button>
-                                                <button className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
-                                                    javascript
-                                                </button>
-                                                <button className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
-                                                    javascript
-                                                </button>
-                                                <button className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
-                                                    react js
-                                                </button>
-                                                <button className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
-                                                    javascript
-                                                </button>
+                                                {requireSkills?.map(
+                                                    (item, i) => (
+                                                        <button
+                                                            key={i}
+                                                            className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
+                                                            {item}
+                                                        </button>
+                                                    )
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -104,9 +114,9 @@ const JobDetailModal = ({showModal, setShowModal}) => {
                                                 alt="client picture"
                                             />
                                             <h2 className="sub-head text-lg font-medium mt-2">
-                                                Md. Maruf Hasan
+                                                {user?.name}
                                             </h2>
-                                            <p>From : Dinajpur, Bangladesh</p>
+                                            <p> Dinajpur, Bangladesh</p>
                                         </div>
                                         <div className="mt-8">
                                             <button className="btn-primary w-full">

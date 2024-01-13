@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import {Toaster} from "react-hot-toast";
 import {AuthProvider} from "@/context/AuthProvider";
+import ReduxProvider from "@/providers/ReduxProvider";
 
 export const metadata = {
     title: "Sadhona",
@@ -14,14 +15,16 @@ export default function RootLayout({children}) {
     return (
         <html lang="en" suppressHydrationWarning>
             <body className="dark:bg-primary bg-secondaryBg text-normal">
-                <AuthProvider>
-                    <ThemeProviders>
-                        <Toaster position="bottom-right" />
-                        <Header />
-                        {children}
-                        <Footer />
-                    </ThemeProviders>
-                </AuthProvider>
+                <ReduxProvider>
+                    <AuthProvider>
+                        <ThemeProviders>
+                            <Toaster position="bottom-right" />
+                            <Header />
+                            {children}
+                            <Footer />
+                        </ThemeProviders>
+                    </AuthProvider>
+                </ReduxProvider>
             </body>
         </html>
     );

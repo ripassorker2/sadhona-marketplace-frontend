@@ -1,7 +1,10 @@
 "use client";
+import {useCreateJobMutation} from "@/redux/api/jobApiSlice";
 import Container from "@/utils/Container";
-import React, {useState} from "react";
+import {useRouter} from "next/navigation";
+import React, {useEffect, useState} from "react";
 import {useFieldArray, useForm} from "react-hook-form";
+import toast from "react-hot-toast";
 import {BsFillTrash2Fill} from "react-icons/bs";
 import {MdAdd} from "react-icons/md";
 const categories = [
@@ -71,6 +74,9 @@ const videoEditingSkillsArray = [
 ];
 const PostJob = () => {
     const [category, setCategory] = useState("");
+    const [createPost, {isError, error, isSuccess}] = useCreateJobMutation();
+    const router = useRouter();
+
     const handleChange = (event) => {
         setCategory(event.target.value);
     };
@@ -86,9 +92,22 @@ const PostJob = () => {
         fields: skillFields,
         append: skillAppend,
         remove: skillRemove,
-    } = useFieldArray({control, name: "skills"});
+    } = useFieldArray({control, name: "requireSkills"});
 
-    const submitInfo = (data) => console.log(data);
+    const submitInfo = (data) => {
+        data.category = category;
+        createPost(data);
+    };
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(error?.data?.errorMessage[0].message);
+        } else if (isSuccess) {
+            toast.success("Job created successfully");
+            router.push("/jobs");
+        }
+    }, [isError, isSuccess]);
+
     return (
         <Container>
             <div className="dark:bg-primary2 rounded-md shadow-md">
@@ -322,16 +341,15 @@ const PostJob = () => {
                         <div>
                             <label
                                 htmlFor="description"
-                                className="block  mb-2 dark:text-white">
+                                className="block mb-2 dark:text-white">
                                 Description
                             </label>
                         </div>
                         <div className="relative">
-                            <input
-                                type="text"
+                            <textarea
                                 id="description"
                                 name="description"
-                                className="py-2 px-4 block border dark:focus:border-gray-500 dark:border-gray-600 border-gray-700 w-full rounded-md dark:bg-primary focus:outline-none "
+                                className="py-2 px-4 block border dark:focus:border-gray-500 dark:border-gray-600 border-gray-700 w-full rounded-md dark:bg-primary focus:outline-none"
                                 {...register("description", {required: true})}
                                 placeholder="Description..."
                             />
@@ -342,25 +360,26 @@ const PostJob = () => {
                             </p>
                         )}
                     </div>
+
                     <div className="">
                         <div>
                             <label
-                                htmlFor="delivary"
+                                htmlFor="daliveryTime"
                                 className="block  mb-2 dark:text-white">
-                                Delivary time
+                                Delivery time (day)
                             </label>
                         </div>
                         <div className="relative">
                             <input
                                 type="number"
-                                id="delivary"
-                                name="delivary"
+                                id="daliveryTime"
+                                name="daliveryTime"
                                 className="py-2 px-4 block border dark:focus:border-gray-500 dark:border-gray-600 border-gray-700 w-full rounded-md dark:bg-primary focus:outline-none "
-                                {...register("delivary", {required: true})}
-                                placeholder="Delivary time..."
+                                {...register("daliveryTime", {required: true})}
+                                placeholder="Delivery time (day)..."
                             />
                         </div>
-                        {errors.description && (
+                        {errors.daliveryTime && (
                             <p className="text-sm text-red-500">
                                 This field is required
                             </p>
@@ -373,12 +392,14 @@ const PostJob = () => {
                             {skillFields.map((item, index) => {
                                 return (
                                     <div
-                                        key={item.key}
+                                        key={index}
                                         className="flex items-center gap-3 mb-5">
                                         <input
                                             className="py-2 px-4 block border dark:focus:border-gray-500 dark:border-gray-600 border-gray-700 w-full rounded-md dark:bg-primary focus:outline-none"
                                             type="text"
-                                            {...register(`skills[${index}]`)}
+                                            {...register(
+                                                `requireSkills[${index}]`
+                                            )}
                                         />
                                         <button
                                             type="button"
