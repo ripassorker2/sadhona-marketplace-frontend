@@ -30,7 +30,7 @@ const JobCard = ({data, setShowModal, setCurrentJob}) => {
                 {requireSkills?.slice(0, 4)?.map((item, i) => (
                     <button
                         key={i}
-                        className="rounded-3xl text-normal dark:bg-slate-600 bg-gray-300 px-4 py-1">
+                        className="rounded-3xl text-normal capitalize dark:bg-slate-600 bg-gray-300 px-4 py-1">
                         {item}
                     </button>
                 ))}

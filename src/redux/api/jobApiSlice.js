@@ -7,6 +7,7 @@ export const jobApiSlice = apiSlice.injectEndpoints({
                 method: "GET",
                 url: `/job?${queries}`,
             }),
+            providesTags: ["Jobs"],
         }),
         createJob: builder.mutation({
             query: (data) => ({
@@ -17,6 +18,7 @@ export const jobApiSlice = apiSlice.injectEndpoints({
                 },
                 body: data,
             }),
+            invalidatesTags: ["Jobs"],
         }),
     }),
 });

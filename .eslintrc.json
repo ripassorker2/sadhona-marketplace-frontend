@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals"],
+  "extends": ["next/core-web-vitals","next"],
   "plugins": ["import", "react-hooks"],
   "rules": {
     "no-unused-vars": "error",
