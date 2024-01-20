@@ -72,7 +72,7 @@ const AllJobs = ({query}) => {
                 )}
             </div>
 
-            {!search && !category && totaltPage && (
+            {!search && !category && totaltPage && total > 10 && (
                 <div className="flex justify-end mt-8">
                     <div class="flex items-center -space-x-px">
                         <button
