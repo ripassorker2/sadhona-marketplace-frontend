@@ -13,7 +13,7 @@ export const AuthProvider = ({children}) => {
         setToken(localStorage.getItem("accessToken") || "");
         if (token) {
             const decodedInfo = getUserInfoFromToken(token);
-            fetch(`${process.env.BASE_URL}/user/${decodedInfo.email}`)
+            fetch(`${process.env.BASE_URL}/user/${decodedInfo.id}`)
                 .then((res) => res.json())
                 .then((data) => setUser(data.data));
         } else {
