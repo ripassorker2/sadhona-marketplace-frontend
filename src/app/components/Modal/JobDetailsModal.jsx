@@ -4,9 +4,12 @@ import {MdOutlineCancel} from "react-icons/md";
 import img from "../../../assets/team/kamrul.jpg";
 import TimeAgo from "timeago-react";
 import {formattedDateString} from "@/utils/formateDateTime";
+import Link from "next/link";
+import {useState} from "react";
+import ChatModal from "./ChatModal";
 
-const JobDetailModal = ({data, showModal, setShowModal}) => {
-    console.log(data);
+const JobDetailModal = ({user, data, showModal, setShowModal}) => {
+    const [chatModal, setChatModal] = useState(false);
     const {
         title,
         level,
@@ -15,7 +18,6 @@ const JobDetailModal = ({data, showModal, setShowModal}) => {
         description,
         requireSkills,
         createdAt,
-        user,
     } = data;
 
     return (
@@ -114,7 +116,7 @@ const JobDetailModal = ({data, showModal, setShowModal}) => {
                                                 alt="client picture"
                                             />
                                             <h2 className="sub-head text-lg font-medium mt-2">
-                                                {user?.name}
+                                                {data?.user?.name}
                                             </h2>
                                             <p> Dinajpur, Bangladesh</p>
                                         </div>
@@ -122,7 +124,12 @@ const JobDetailModal = ({data, showModal, setShowModal}) => {
                                             <button className="btn-primary w-full">
                                                 Apply Now{" "}
                                             </button>
-                                            <button className="btn-primary w-full my-4 bg-blue hover:bg-blue text-secondaryBg">
+
+                                            <button
+                                                onClick={() =>
+                                                    setChatModal(true)
+                                                }
+                                                className="btn-primary w-full my-4 bg-blue hover:bg-blue text-secondaryBg">
                                                 Message
                                             </button>
                                         </div>
@@ -132,6 +139,13 @@ const JobDetailModal = ({data, showModal, setShowModal}) => {
                         </div>
                     </div>
                     <div className="opacity-60 fixed inset-0 z-[999999] bg-black"></div>{" "}
+                    {chatModal && (
+                        <ChatModal
+                            otherUser={data?.user}
+                            chatModal={chatModal}
+                            setChatModal={setChatModal}
+                        />
+                    )}
                 </div>
             )}
         </>

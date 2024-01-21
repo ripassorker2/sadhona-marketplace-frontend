@@ -13,14 +13,21 @@ export const chatApiSlice = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: `/chat/message`,
                 method: "POST",
-                // headers: {
-                //     authorization: localStorage.getItem("accessToken"),
-                // },
+                body: data,
+            }),
+        }),
+        createConversation: builder.mutation({
+            query: (data) => ({
+                url: `chat/conversation`,
+                method: "POST",
                 body: data,
             }),
         }),
     }),
 });
 
-export const {useGetConversationQuery, useCreateNewMessageMutation} =
-    chatApiSlice;
+export const {
+    useGetConversationQuery,
+    useCreateNewMessageMutation,
+    useCreateConversationMutation,
+} = chatApiSlice;

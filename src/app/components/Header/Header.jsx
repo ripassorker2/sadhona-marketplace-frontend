@@ -38,6 +38,16 @@ const Header = () => {
                                 </Link>
                             </li>
 
+                            {user?.email && (
+                                <li>
+                                    <Link
+                                        className="text-primary dark:text-darkText hover:text-blue text-base dark:hover:text-blue duration-300 "
+                                        href={"/chat"}>
+                                        Message
+                                    </Link>
+                                </li>
+                            )}
+
                             <div className="mt-3">
                                 <ThemeSwitcher />
                             </div>

@@ -3,10 +3,12 @@ import JobCard from "@/app/components/JobCard/JobCard";
 import JobsHeader from "@/app/components/JobsHeader/JobsHeader";
 import JobDetailModal from "@/app/components/Modal/JobDetailsModal";
 import Loading from "@/app/loading";
+import {useUserContext} from "@/context/AuthProvider";
 import {useGetAllJobsQuery} from "@/redux/api/jobApiSlice";
 import React, {useState} from "react";
 
 const AllJobs = ({query}) => {
+    const {user} = useUserContext();
     const [showModal, setShowModal] = useState(false);
     const [currentJob, setCurrentJob] = useState("");
     const [category, setCategory] = useState("");
@@ -66,6 +68,7 @@ const AllJobs = ({query}) => {
                 {showModal && currentJob && (
                     <JobDetailModal
                         data={currentJob}
+                        user={user}
                         showModal={showModal}
                         setShowModal={setShowModal}
                     />
@@ -74,25 +77,25 @@ const AllJobs = ({query}) => {
 
             {!search && !category && totaltPage && total > 10 && (
                 <div className="flex justify-end mt-8">
-                    <div class="flex items-center -space-x-px">
+                    <div className="flex items-center -space-x-px">
                         <button
                             onClick={() => setPage(page - 1)}
                             disabled={page <= 0 ? true : false}
-                            class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+                            className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
                             <svg
-                                class="flex-shrink-0 w-3.5 h-3.5"
+                                className="flex-shrink-0 w-3.5 h-3.5"
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
                                 height="24"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round">
                                 <path d="m15 18-6-6 6-6" />
                             </svg>
-                            <span class="hidden sm:block">Previous</span>
+                            <span className="hidden sm:block">Previous</span>
                         </button>
                         {[...Array(totaltPage)?.keys()].map((number) => (
                             <button
@@ -109,19 +112,19 @@ const AllJobs = ({query}) => {
                         <button
                             disabled={totaltPage == page + 1 ? true : false}
                             onClick={() => setPage(page + 1)}
-                            class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
-                            <span class="hidden sm:block">Next</span>
+                            className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+                            <span className="hidden sm:block">Next</span>
                             <svg
-                                class="flex-shrink-0 w-3.5 h-3.5"
+                                className="flex-shrink-0 w-3.5 h-3.5"
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
                                 height="24"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round">
                                 <path d="m9 18 6-6-6-6" />
                             </svg>
                         </button>
