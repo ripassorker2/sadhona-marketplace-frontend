@@ -1,4 +1,5 @@
 "use client";
+import {useUserContext} from "@/context/AuthProvider";
 import Link from "next/link";
 const categories = [
     "Data Entry",
@@ -11,6 +12,8 @@ const categories = [
 ];
 
 const JobsHeader = ({category, setCategory, search, setSearch}) => {
+    const {user} = useUserContext();
+    console.log(user);
     return (
         <div className="dark:bg-primary2 rounded-lg bg-gray-100 mb-14 p-4">
             <div className="flex justify-between items-center">
@@ -45,11 +48,13 @@ const JobsHeader = ({category, setCategory, search, setSearch}) => {
                         placeholder="Search here..."
                     />
                 </div>
-                <div className="">
-                    <Link href={"/postjob"} className="btn-primary">
-                        Post a job
-                    </Link>
-                </div>
+                {user?.role == "client" && (
+                    <div className="">
+                        <Link href={"/postjob"} className="btn-primary">
+                            Create a job
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     );

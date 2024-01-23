@@ -8,9 +8,10 @@ import userImg from "../../../assets/user.jpeg";
 import Image from "next/image";
 import Message from "./Message";
 import {io} from "socket.io-client";
+import {useRouter} from "next/navigation";
 
 const Chat = () => {
-    const {user} = useUserContext();
+    const {user, token} = useUserContext();
     const [currentChat, setCurrentChat] = useState(null);
     const [otherUser, setOtherUser] = useState(null);
     const [messages, setMessages] = useState([]);
@@ -18,11 +19,19 @@ const Chat = () => {
     const [socketMessage, setSocketMessage] = useState(null);
     const {data, isLoading} = useGetConversationQuery(user?._id);
     const [newMessage, setNewMessage] = useState("");
-    const socket = useRef(io("ws://localhost:8000"));
+    const socket = useRef(io("https://socket-server-1e45.onrender.com/"));
+    const router = useRouter();
 
     useEffect(() => {
-        socket.current = io("ws://localhost:8000");
+        if (!token) {
+            router.push("/login");
+        }
+    }, [token]);
+
+    useEffect(() => {
+        socket.current = io("https://socket-server-1e45.onrender.com/");
         socket.current.on("getMessage", (data) => {
+            console.log(data);
             setSocketMessage({
                 senderId: data.senderId,
                 message: data.message,
@@ -31,6 +40,7 @@ const Chat = () => {
         });
     }, []);
 
+    // conversation sorting
     useEffect(() => {
         if (data?.data) {
             const sortData = [...data.data].sort(
@@ -41,6 +51,7 @@ const Chat = () => {
     }, [data?.data]);
 
     useEffect(() => {
+        console.log(socketMessage);
         socketMessage &&
             currentChat?.members.includes(socketMessage.senderId) &&
             setMessages((prev) => [...prev, socketMessage]);
@@ -53,7 +64,7 @@ const Chat = () => {
         });
     }, [user]);
 
-    const scrollRef = useRef(null);
+    //get current chat user
     useEffect(() => {
         if (currentChat) {
             fetch(`${process.env.BASE_URL}/chat/${currentChat?._id}`)
@@ -62,6 +73,7 @@ const Chat = () => {
         }
     }, [currentChat]);
 
+    // ..get other user
     useEffect(() => {
         const otherUserId = currentChat?.members?.find((id) => id != user._id);
         if (otherUserId) {
@@ -71,8 +83,9 @@ const Chat = () => {
         }
     }, [currentChat]);
 
+    const scrollRef = useRef(null);
+    // Scroll to the bottom when messages change
     useEffect(() => {
-        // Scroll to the bottom when messages change
         scrollRef?.current?.scrollIntoView({
             behavior: "smooth",
             block: "end",

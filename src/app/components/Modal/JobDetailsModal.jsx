@@ -20,6 +20,8 @@ const JobDetailModal = ({user, data, showModal, setShowModal}) => {
         createdAt,
     } = data;
 
+    console.log(user);
+
     return (
         <>
             {showModal && (
@@ -120,19 +122,21 @@ const JobDetailModal = ({user, data, showModal, setShowModal}) => {
                                             </h2>
                                             <p> Dinajpur, Bangladesh</p>
                                         </div>
-                                        <div className="mt-8">
-                                            <button className="btn-primary w-full">
-                                                Apply Now{" "}
-                                            </button>
+                                        {user?.role == "freelancer" && (
+                                            <div className="mt-8">
+                                                <button className="btn-primary w-full">
+                                                    Apply Now{" "}
+                                                </button>
 
-                                            <button
-                                                onClick={() =>
-                                                    setChatModal(true)
-                                                }
-                                                className="btn-primary w-full my-4 bg-blue hover:bg-blue text-secondaryBg">
-                                                Message
-                                            </button>
-                                        </div>
+                                                <button
+                                                    onClick={() =>
+                                                        setChatModal(true)
+                                                    }
+                                                    className="btn-primary w-full my-4 bg-blue hover:bg-blue text-secondaryBg">
+                                                    Message
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

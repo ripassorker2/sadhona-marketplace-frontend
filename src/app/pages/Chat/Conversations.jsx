@@ -10,7 +10,7 @@ import {formattedDateString} from "@/utils/formateDateTime";
 const Conversations = ({currentUser, conversation, mess}) => {
     const [messages, setMessages] = useState([]);
     const otherUserId = conversation?.members?.find(
-        (id) => id != currentUser._id
+        (id) => id != currentUser?._id
     );
 
     useEffect(() => {

@@ -5,10 +5,18 @@ import PersonalInfo from "../pages/Profile/PersonalInfo/PersonalInfo";
 import Experience from "../pages/Profile/Experience/Experience";
 import Skills from "../pages/Profile/Skills/Skills";
 import Educations from "../pages/Profile/Educations/Educations";
+import {useRouter} from "next/navigation";
+import {useEffect} from "react";
 
 const ProfilePage = () => {
-    const {user} = useUserContext();
-    console.log(user);
+    const {user, token} = useUserContext();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!token) {
+            router.push("/login");
+        }
+    }, [token]);
     return (
         <Container>
             <div className="md:grid md:grid-cols-7 gap-10 text-normal">
